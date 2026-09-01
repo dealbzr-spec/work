@@ -1,0 +1,96 @@
+{% doc %}
+  Renders the predictive search empty state with Top Tag Pills and 8 Featured Collection Products (Fully Mobile Responsive)
+{% enddoc %}
+
+<div
+  id="predictive-search-results"
+  class="predictive-search-dropdown"
+  role="listbox"
+  aria-expanded="true"
+>
+  <div class="boat-search-modal-container">
+    
+    {% comment %} --- Top Search Tag Pills --- {% endcomment %}
+    {% assign text_tags = section.settings.search_tags | default: settings.search_tags %}
+
+    <div class="boat-search-tags-carousel" id="BoatSearchTagsCarousel">
+      {% if text_tags != blank %}
+        {% assign tags = text_tags | split: ',' %}
+        {% for tag in tags %}
+          {% assign clean_tag = tag | strip %}
+          {% if clean_tag != blank %}
+            <a href="{{ routes.search_url }}?q={{ clean_tag | url_param_escape }}" class="boat-search-tag-pill">
+              {{ clean_tag }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <a href="{{ routes.search_url }}?q=smartwatch" class="boat-search-tag-pill">smartwatch</a>
+        <a href="{{ routes.search_url }}?q=official+warranty" class="boat-search-tag-pill">official warranty</a>
+        <a href="{{ routes.search_url }}?q=earbuds" class="boat-search-tag-pill">earbuds</a>
+        <a href="{{ routes.search_url }}?q=clearance+sale" class="boat-search-tag-pill">clearance sale</a>
+        <a href="{{ routes.search_url }}?q=sale" class="boat-search-tag-pill">sale</a>
+        <a href="{{ routes.search_url }}?q=westpoint" class="boat-search-tag-pill">westpoint</a>
+      {% endif %}
+    </div>
+
+    {% comment %} --- Dynamic Section Title --- {% endcomment %}
+    <h3 class="boat-search-modal-title">
+      {{ section.settings.search_modal_heading | default: settings.search_modal_heading | default: 'Trending Products' }}
+    </h3>
+
+    {% comment %} --- Selected Collection Products --- {% endcomment %}
+    {% assign selected_col = section.settings.search_featured_collection | default: settings.search_featured_collection %}
+    {% if selected_col == blank %}
+      {% assign selected_col = collections.all %}
+    {% endif %}
+
+    <div class="boat-search-products-grid">
+      {% if selected_col != blank and selected_col.products.size > 0 %}
+        {% for product in selected_col.products limit: 8 %}
+          <a href="{{ product.url }}" class="boat-search-product-card">
+            <div class="boat-search-product-thumb">
+              {% if product.featured_media != blank %}
+                <img src="{{ product.featured_media | image_url: width: 120 }}" alt="{{ product.title | escape }}" loading="lazy" width="48" height="48">
+              {% else %}
+                <span>🛍️</span>
+              {% endif %}
+            </div>
+
+            <div class="boat-search-product-info">
+              <span class="boat-search-product-title">
+                {{ product.title }}
+              </span>
+              
+              <div class="boat-search-product-price-row">
+                <span>{{ product.price | money }}</span>
+                {% if product.compare_at_price > product.price %}
+                  <span class="boat-search-product-compare">
+                    {{ product.compare_at_price | money }}
+                  </span>
+                {% endif %}
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      {% else %}
+        {% comment %} Fallback Product Cards when collection has no products yet {% endcomment %}
+        {% for i in (1..8) %}
+          <a href="/collections/all" class="boat-search-product-card">
+            <div class="boat-search-product-thumb">
+              📦
+            </div>
+            <div class="boat-search-product-info">
+              <span class="boat-search-product-title">
+                Sample Product {{ i }}
+              </span>
+              <span class="boat-search-product-price-row">
+                Rs. 1,499.00
+              </span>
+            </div>
+          </a>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
