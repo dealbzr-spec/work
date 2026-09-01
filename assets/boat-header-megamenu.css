@@ -2051,52 +2051,54 @@ a.boat-megamenu-card,
   padding: 0 !important;
 }
 
-/* Collection Page & Search Page Grid Layout Optimization (6 Products Per Row on Desktop) */
-.template-collection .product-grid,
-.template-search .product-grid,
-.main-collection-grid .product-grid,
-.collection-wrapper .product-grid {
-  display: grid !important;
-  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-  gap: 14px 8px !important;
-  list-style: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
+/* Collection Page & Search Page Grid Layout - Centered Container & Strictly 6 Products Per Row on Desktop */
+.product-grid-container,
+.collection-wrapper,
+.main-collection-grid,
+.template-collection .product-grid-container,
+.template-search .product-grid-container {
+  max-width: 1440px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box !important;
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (min-width: 990px) {
   .template-collection .product-grid,
   .template-search .product-grid,
   .main-collection-grid .product-grid,
-  .collection-wrapper .product-grid {
-    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  .collection-wrapper .product-grid,
+  .product-grid[data-testid="product-grid"] {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 16px 10px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    max-width: 1440px !important;
   }
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 989px) and (min-width: 750px) {
   .template-collection .product-grid,
   .template-search .product-grid,
   .main-collection-grid .product-grid,
   .collection-wrapper .product-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 14px 8px !important;
   }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 749px) {
   .template-collection .product-grid,
   .template-search .product-grid,
   .main-collection-grid .product-grid,
   .collection-wrapper .product-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  .template-collection .product-grid,
-  .template-search .product-grid,
-  .main-collection-grid .product-grid,
-  .collection-wrapper .product-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
     gap: 10px 6px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
   }
 }

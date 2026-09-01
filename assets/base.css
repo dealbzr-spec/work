@@ -2416,3 +2416,32 @@ main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
   font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 
+/* Centered Container & Strictly 6 Products Per Row on Desktop */
+.product-grid-container,
+.collection-wrapper,
+.main-collection-grid,
+.template-collection .product-grid-container,
+.template-search .product-grid-container {
+  max-width: 1440px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box !important;
+}
+
+@media screen and (min-width: 990px) {
+  .template-collection .product-grid,
+  .template-search .product-grid,
+  .main-collection-grid .product-grid,
+  .collection-wrapper .product-grid,
+  .product-grid[data-testid="product-grid"] {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 16px 10px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    max-width: 1440px !important;
+  }
+}
+
+
