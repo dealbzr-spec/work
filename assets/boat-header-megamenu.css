@@ -2051,7 +2051,7 @@ a.boat-megamenu-card,
   padding: 0 !important;
 }
 
-/* Collection Page & Search Page Grid Layout - Centered Container & Strictly 6 Products Per Row on Desktop */
+/* Collection Page & Search Page Grid Layout - Dynamic Icon Toggling (4 vs 6 Columns) */
 .product-grid-container,
 .collection-wrapper,
 .main-collection-grid,
@@ -2063,12 +2063,40 @@ a.boat-megamenu-card,
   box-sizing: border-box !important;
 }
 
+/* Default / Unset state on Desktop -> 6 Columns */
 @media screen and (min-width: 990px) {
-  .template-collection .product-grid,
-  .template-search .product-grid,
-  .main-collection-grid .product-grid,
-  .collection-wrapper .product-grid,
-  .product-grid[data-testid="product-grid"] {
+  .template-collection .product-grid:not([product-grid-view]),
+  .template-search .product-grid:not([product-grid-view]),
+  .main-collection-grid .product-grid:not([product-grid-view]),
+  .collection-wrapper .product-grid:not([product-grid-view]) {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 16px 10px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    max-width: 1440px !important;
+  }
+
+  /* 4-Grid Icon Clicked (value="default" or 4-columns) */
+  .product-grid[product-grid-view='default'],
+  .template-collection .product-grid[product-grid-view='default'],
+  .template-search .product-grid[product-grid-view='default'],
+  .main-collection-grid .product-grid[product-grid-view='default'] {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px 14px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    max-width: 1440px !important;
+  }
+
+  /* 6-Grid Icon Clicked (value="zoom-out" or 6-columns / dense) */
+  .product-grid[product-grid-view='zoom-out'],
+  .template-collection .product-grid[product-grid-view='zoom-out'],
+  .template-search .product-grid[product-grid-view='zoom-out'],
+  .main-collection-grid .product-grid[product-grid-view='zoom-out'] {
     display: grid !important;
     grid-template-columns: repeat(6, 1fr) !important;
     gap: 16px 10px !important;
@@ -2100,5 +2128,10 @@ a.boat-megamenu-card,
     gap: 10px 6px !important;
     padding-left: 5px !important;
     padding-right: 5px !important;
+  }
+
+  .template-collection .product-grid[product-grid-view='mobile-single'],
+  .template-search .product-grid[product-grid-view='mobile-single'] {
+    grid-template-columns: 1fr !important;
   }
 }
