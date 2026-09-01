@@ -1956,16 +1956,22 @@ a.boat-megamenu-card,
 /* Product Grid Items Reset for Site-Wide boAt Cards */
 .product-grid__item,
 .grid__item,
-.results-list .product-grid__item {
+.results-list .product-grid__item,
+.resource-list__item {
   list-style: none !important;
   margin: 0 !important;
   padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 .product-grid__item > product-card,
 .product-grid__item > .product-card,
 .product-grid__item > .boat-pick-card,
-.results-list .boat-pick-card {
+.results-list .boat-pick-card,
+.resource-list__item > .boat-pick-card,
+.grid__item > .boat-pick-card {
   width: 100% !important;
   height: 100% !important;
   display: flex !important;
