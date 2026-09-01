@@ -2051,20 +2051,29 @@ a.boat-megamenu-card,
   padding: 0 !important;
 }
 
-/* Collection Page & Search Page Grid Layout Optimization (Matches Top Picks Card Layout) */
+/* Collection Page & Search Page Grid Layout Optimization (6 Products Per Row on Desktop) */
 .template-collection .product-grid,
 .template-search .product-grid,
 .main-collection-grid .product-grid,
 .collection-wrapper .product-grid {
   display: grid !important;
-  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
-  gap: 16px 10px !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  gap: 14px 8px !important;
   list-style: none !important;
   padding: 0 !important;
   margin: 0 !important;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1400px) {
+  .template-collection .product-grid,
+  .template-search .product-grid,
+  .main-collection-grid .product-grid,
+  .collection-wrapper .product-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+}
+
+@media screen and (max-width: 1100px) {
   .template-collection .product-grid,
   .template-search .product-grid,
   .main-collection-grid .product-grid,
@@ -2073,7 +2082,7 @@ a.boat-megamenu-card,
   }
 }
 
-@media screen and (max-width: 989px) {
+@media screen and (max-width: 850px) {
   .template-collection .product-grid,
   .template-search .product-grid,
   .main-collection-grid .product-grid,
@@ -2082,7 +2091,7 @@ a.boat-megamenu-card,
   }
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 640px) {
   .template-collection .product-grid,
   .template-search .product-grid,
   .main-collection-grid .product-grid,
