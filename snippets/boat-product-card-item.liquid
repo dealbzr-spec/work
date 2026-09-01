@@ -12,7 +12,10 @@
   # 1. Collection / Product Category Name Display (Only show if real collection exists)
   assign display_tag = product.collections.first.title
   if display_tag == 'All' or display_tag == 'Home page' or display_tag == blank
-    assign display_tag = ''
+    assign display_tag = product.type
+  endif
+  if display_tag == blank
+    assign display_tag = 'Home & Living'
   endif
 
   # 2. Consistent Deterministic Product Rating (3.7 to 5.0) per product
@@ -65,12 +68,12 @@
       {% if compare_price > price %}
         <div class="boat-pick-card__badge">
           <span>⚡</span>
-          <span>Sale</span>
+          <span>SALE</span>
         </div>
       {% else %}
         <div class="boat-pick-card__badge">
           <span>✨</span>
-          <span>New Launch</span>
+          <span>NEW LAUNCH</span>
         </div>
       {% endif %}
 
