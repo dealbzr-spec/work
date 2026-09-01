@@ -124,7 +124,7 @@
                                                                                                                                                 "type":  "text",
                                                                                                                                                 "name":  "t:names.product_title",
                                                                                                                                                 "settings":  {
-                                                                                                                                                                 "text":  "<h1>{{ closest.product.title }}</h1>",
+                                                                                                                                                                 "text":  "<h1>{{ product.title }}</h1>",
                                                                                                                                                                  "width":  "100%",
                                                                                                                                                                  "max_width":  "normal",
                                                                                                                                                                  "alignment":  "left",
@@ -291,7 +291,7 @@
                                                                                                             "type":  "text",
                                                                                                             "name":  "t:names.product_description",
                                                                                                             "settings":  {
-                                                                                                                             "text":  "{{ closest.product.description }}",
+                                                                                                                             "text":  "{{ product.description }}",
                                                                                                                              "width":  "100%",
                                                                                                                              "max_width":  "normal",
                                                                                                                              "alignment":  "left",
@@ -471,7 +471,7 @@
                                                                                 "text_cbcgyb"
                                                                             ],
                                                             "settings":  {
-                                                                             "product":  "{{ closest.product }}",
+                                                                             "product":  "{{ product }}",
                                                                              "recommendation_type":  "related",
                                                                              "layout_type":  "grid",
                                                                              "carousel_on_mobile":  false,
