@@ -3,6 +3,17 @@
     "main": {
       "type": "product-information",
       "blocks": {
+        "media-gallery": {
+          "type": "_product-media-gallery",
+          "settings": {
+            "media_presentation": "carousel",
+            "media_columns": "one",
+            "image_gap": 0,
+            "large_first_image": false,
+            "slideshow_controls_style": "thumbnails",
+            "slideshow_mobile_controls_style": "thumbnails"
+          }
+        },
         "product-details": {
           "type": "_product-details",
           "blocks": {
@@ -84,6 +95,7 @@
         }
       },
       "block_order": [
+        "media-gallery",
         "product-details"
       ],
       "settings": {
