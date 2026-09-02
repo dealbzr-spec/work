@@ -94,10 +94,12 @@
             {{ option_id_attribute }}
           >
             <legend>
-              {{ product_option.name | escape -}}
-              {%- if variant_style == 'swatch' -%}
-                <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
-              {%- endif %}
+              {% assign opt_name_lower = product_option.name | downcase %}
+              {% if opt_name_lower contains 'color' or opt_name_lower contains 'colour' %}
+                Choose your color: <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
+              {% else %}
+                {{ product_option.name | escape }}: <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
+              {% endif %}
             </legend>
             {%- for product_option_value in product_option.values -%}
               {% if product_option_value.size > longest_value and option_id_attribute %}

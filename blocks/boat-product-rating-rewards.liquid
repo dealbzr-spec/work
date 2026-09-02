@@ -1,0 +1,53 @@
+<div class="boat-rating-rewards-wrapper" {{ block.shopify_attributes }}>
+  <div class="boat-rating-badge">
+    <span class="boat-star-icon">★</span>
+    <span class="boat-rating-score">{{ block.settings.rating_score | default: '4.7' }}</span>
+    <span class="boat-rating-count">({{ block.settings.rating_count | default: '310' }})</span>
+  </div>
+  {% if block.settings.show_reward_points %}
+    <div class="boat-reward-points-pill">
+      <span class="boat-reward-text">
+        {{ block.settings.reward_points_text | default: 'Earn upto 69 boAt reward points on this product' }}
+      </span>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "boAt Rating & Rewards",
+  "tag": "div",
+  "class": "boat-rating-rewards-block",
+  "settings": [
+    {
+      "type": "text",
+      "id": "rating_score",
+      "label": "Rating Score",
+      "default": "4.7"
+    },
+    {
+      "type": "text",
+      "id": "rating_count",
+      "label": "Rating Count",
+      "default": "310"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_reward_points",
+      "label": "Show Reward Points Pill",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "reward_points_text",
+      "label": "Reward Points Text",
+      "default": "Earn upto 69 boAt reward points on this product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "boAt Rating & Rewards"
+    }
+  ]
+}
+{% endschema %}

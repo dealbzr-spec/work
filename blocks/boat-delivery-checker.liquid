@@ -1,0 +1,73 @@
+<div class="boat-delivery-checker-card" {{ block.shopify_attributes }}>
+  <h4 class="boat-delivery-heading">{{ block.settings.heading | default: 'Check Delivery' }}</h4>
+  
+  <div class="boat-pincode-input-group">
+    <input 
+      type="text" 
+      id="BoatPincodeInput" 
+      class="boat-pincode-input" 
+      placeholder="Enter Pincode" 
+      maxlength="6"
+      value="{{ block.settings.default_pincode | default: '122008' }}"
+    />
+    <button type="button" id="BoatPincodeBtn" class="boat-pincode-btn" onclick="checkBoatDelivery()">
+      Change
+    </button>
+  </div>
+
+  <div id="BoatDeliveryResult" class="boat-delivery-result">
+    <svg class="boat-truck-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="1" y="3" width="15" height="13"></rect>
+      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+      <circle cx="5.5" cy="18.5" r="2.5"></circle>
+      <circle cx="18.5" cy="18.5" r="2.5"></circle>
+    </svg>
+    <span id="BoatDeliveryText" class="boat-delivery-text">
+      Free delivery | By <strong id="BoatDeliveryDate">Monday, 7 Sept</strong>
+    </span>
+  </div>
+</div>
+
+<script>
+  function checkBoatDelivery() {
+    var pincodeInput = document.getElementById('BoatPincodeInput');
+    var dateEl = document.getElementById('BoatDeliveryDate');
+    var val = pincodeInput.value.trim();
+    if (val.length === 6 && /^\d+$/.test(val)) {
+      // Calculate delivery date 4 days from today
+      var d = new Date();
+      d.setDate(d.getDate() + 4);
+      var options = { weekday: 'long', day: 'numeric', month: 'short' };
+      dateEl.innerText = d.toLocaleDateString('en-IN', options);
+    } else {
+      alert('Please enter a valid 6-digit Pincode.');
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "boAt Delivery Checker",
+  "tag": "div",
+  "class": "boat-delivery-checker-block",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Check Delivery"
+    },
+    {
+      "type": "text",
+      "id": "default_pincode",
+      "label": "Default Pincode",
+      "default": "122008"
+    }
+  ],
+  "presets": [
+    {
+      "name": "boAt Delivery Checker"
+    }
+  ]
+}
+{% endschema %}

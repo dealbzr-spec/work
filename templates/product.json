@@ -2,6 +2,90 @@
   "sections": {
     "main": {
       "type": "product-information",
+      "blocks": {
+        "product-details": {
+          "type": "_product-details",
+          "blocks": {
+            "rating_rewards": {
+              "type": "boat-product-rating-rewards",
+              "settings": {
+                "rating_score": "4.7",
+                "rating_count": "310",
+                "show_reward_points": true,
+                "reward_points_text": "Earn upto 69 boAt reward points on this product"
+              }
+            },
+            "title": {
+              "type": "product-title",
+              "settings": {
+                "heading_tag": "h1"
+              }
+            },
+            "price": {
+              "type": "price",
+              "settings": {}
+            },
+            "variant_picker": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": true
+              }
+            },
+            "delivery_checker": {
+              "type": "boat-delivery-checker",
+              "settings": {
+                "heading": "Check Delivery",
+                "default_pincode": "122008"
+              }
+            },
+            "payment_rewards": {
+              "type": "boat-payment-rewards-offer",
+              "settings": {
+                "heading": "Rewards and Payment Offers",
+                "offer_text": "Redeem upto 10% off additionally with boAt rewards"
+              }
+            },
+            "active_offers": {
+              "type": "boat-active-offers",
+              "settings": {
+                "heading": "Active Offers",
+                "card1_badge": "MOST POPULAR",
+                "card1_title": "Buy 2 or more",
+                "card1_discount": "Get 6% Off",
+                "card1_code": "BOAT6",
+                "card2_badge": "BEST VALUE",
+                "card2_title": "Buy 5 or more",
+                "card2_discount": "Get 7% Off",
+                "card2_code": "BOAT7",
+                "card3_badge": "MOST SAVINGS",
+                "card3_title": "Buy 10 or more",
+                "card3_discount": "Get 10% Off",
+                "card3_code": "BOAT10"
+              }
+            },
+            "buy_buttons": {
+              "type": "buy-buttons",
+              "settings": {
+                "show_dynamic_checkout": true
+              }
+            }
+          },
+          "block_order": [
+            "rating_rewards",
+            "title",
+            "price",
+            "variant_picker",
+            "delivery_checker",
+            "payment_rewards",
+            "active_offers",
+            "buy_buttons"
+          ]
+        }
+      },
+      "block_order": [
+        "product-details"
+      ],
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
